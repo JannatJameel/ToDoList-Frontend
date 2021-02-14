@@ -1,6 +1,5 @@
 const initialState = {
-  unfinishedTasks: [],
-  finishedTasks: [],
+  tasks: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,28 +7,26 @@ const reducer = (state = initialState, action) => {
     case "FETCH_TASKS":
       return {
         ...state,
-        unfinishedTasks: action.payload.tasks.filter((task) => !task.status),
-        finishedTasks: action.payload.tasks.filter((task) => task.status),
+        tasks: action.payload.tasks,
       };
 
     case "DELETE_TASK":
       return {
         ...state,
-        unfinishedTasks: state.unfinishedTasks.filter((task) => task.id !== action.payload.taskId), 
-        finishedTasks: state.finishedTasks.filter((task) => task.id !== action.payload.taskId)
+        tasks: state.tasks.filter((task) => task.id !== action.payload.taskId),
       };
     case "CREATE_TASK":
       const { newTask } = action.payload;
       return {
         ...state,
-        unfinishedTasks: [...state.unfinishedTasks, newTask],
+        tasks: [...state.tasks, newTask],
       };
     case "UPDATE_TASK":
-      const { updatesTask } = action.payload;
+      const { updatedTask } = action.payload;
       return {
         ...state,
         tasks: state.tasks.map((task) =>
-          task.id === updatesTask.id ? updatesTask : task
+          task.id === updatedTask.id ? updatedTask : task
         ),
       };
 

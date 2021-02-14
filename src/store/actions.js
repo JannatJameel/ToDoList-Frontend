@@ -23,9 +23,7 @@ export const fetchTasks = () => {
 export const deleteTask = (taskId) => {
   return async (dispatch) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:8000/tasks/${taskId}`
-      );
+      const res = await axios.delete(`http://localhost:8000/tasks/${taskId}`);
       dispatch({
         type: DELETE_TASK,
         payload: { taskId },
@@ -55,7 +53,7 @@ export const updateTask = (updatedTask) => {
     try {
       const res = await axios.put(
         `http://localhost:8000/tasks/${updatedTask.id}`,
-        updateTask
+        updatedTask
       );
       dispatch({
         type: UPDATE_TASK,

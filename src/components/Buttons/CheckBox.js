@@ -1,22 +1,27 @@
 import Checkbox from "@material-ui/core/Checkbox";
 
-import { UpdateTask } from "../../store/actions";
-import { useDispatch } from "react-redux";
+import { updateTask } from "../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
-const CheckBox = () => {
-    const dispatch = useDispatch();
+const CheckBox = ({ taskId, status }) => {
+  const dispatch = useDispatch();
+  const task = useSelector((state) => state.tasks).find(
+    (task) => task.id === taskId
+  );
+  const [checked, setChecked] = useState(status);
 
-    const [checked, setChecked] = useState(true);
-    const handleChange = (event) => {
-      setChecked(event.target.checked);
-    };
-    return (
-        <Checkbox
-        checked={checked}
-        onChange={handleChange}
-        inputProps={{ "aria-label": "primary checkbox" }}
-        />
-    );
+  const handleChange = (event) => {
+    setChecked(!status);
+    dispatch(updateTask({ ...task, status: !status }));
+  };
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={handleChange}
+      inputProps={{ "aria-label": "primary checkbox" }}
+    />
+  );
 };
 
 export default CheckBox;
