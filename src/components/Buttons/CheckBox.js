@@ -4,7 +4,7 @@ import { updateTask } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-const CheckBox = ({ taskId, status }) => {
+const CheckBox = ({ taskId, status, passed }) => {
   const dispatch = useDispatch();
   const task = useSelector((state) => state.tasks).find(
     (task) => task.id === taskId
@@ -20,6 +20,7 @@ const CheckBox = ({ taskId, status }) => {
       checked={checked}
       onChange={handleChange}
       inputProps={{ "aria-label": "primary checkbox" }}
+      disabled = {passed}
     />
   );
 };

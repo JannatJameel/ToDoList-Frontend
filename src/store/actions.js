@@ -9,7 +9,6 @@ export const fetchTasks = () => {
   return async (dispatch) => {
     try {
       const res = await axios.get("http://localhost:8000/tasks");
-      console.log(res);
       dispatch({
         type: FETCH_TASKS,
         payload: { tasks: res.data },

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createTask } from "../store/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Form } from "../styles"
 
 const TaskForm = () => {
   const history = useHistory();
@@ -35,60 +36,52 @@ const TaskForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1> New Task </h1>
-      <div className="form-group">
-        <label>Name</label>
-        <input
-          type="text"
-          className="form-control"
-          name="name"
-          value={task.name}
-          onChange={handleChange}
-        />
-        <small className="form-text text-muted">Task Name. </small>
-      </div>
+    <Form>
+      <form onSubmit={handleSubmit}>
 
-      <div className="form-group">
-        <label>Priority</label>
-        <input
-          type="text"
-          className="form-control"
-          name="priority"
-          value={task.priority}
-          onChange={handleChange}
-        />
-        <small className="form-text text-muted">Task Priority. </small>
-      </div>
+        <h1 style={{marginTop: "10%", marginLeft: "45%"}}> New Task </h1>
 
-      <div className="form-group">
-        <label>Description</label>
-        <input
-          type="boolean"
-          className="form-control"
-          name="status"
-          value={task.status}
-          onChange={handleChange}
-        />
-        <small className="form-text text-muted">Task Status. </small>
-      </div>
+        <div className="form-group" style={{marginTop: "30px", marginLeft: "20%", marginRight: "20%"}}>
+          <label>Name</label>
+          <input
+            type="text"
+            className="form-control"
+            name="name"
+            value={task.name}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div className="form-group">
-        <label>Deadline</label>
-        <input
-          type="date"
-          className="form-control"
-          name="deadline"
-          value={task.deadline}
-          onChange={handleChange}
-        />
-        <small className="form-text text-muted">Task Deadline. </small>
-      </div>
+        <div className="form-group" style={{marginLeft: "20%", marginRight: "20%"}}>
+          <label>Priority</label>
+          <div>
+            <input type="radio" id="low" name="priority" value="low" onClick={handleChange}/>
+            <label for="low">Low</label><br></br>
+            <input type="radio" id="medium" name="priority" value="medium" onClick={handleChange}/>
+            <label for="medium">Medium</label><br></br>
+            <input type="radio" id="high" name="priority" value="high" onClick={handleChange}/>
+            <label for="high">High</label><br></br>
+          </div>
+        </div>
 
-      <button type="submit" className="btn btn-primary">
-        Create
-      </button>
-    </form>
+        <div className="form-group" style={{marginLeft: "20%", marginRight: "20%"}}>
+          <label>Deadline</label>
+          <input
+            type="date"
+            className="form-control"
+            name="deadline"
+            value={task.deadline}
+            onChange={handleChange}
+          />
+        </div>
+        
+        <button type="submit" className="btn btn-primary" style={{marginLeft: "20%", marginRight: "auto"}}>
+          Create
+        </button>
+
+      </form>
+    </Form>
+
   );
 };
 

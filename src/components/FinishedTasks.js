@@ -25,9 +25,9 @@ const FinishedTasks = () => {
     .map((task) => <Task task={task} key={task.id} />);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{topMargin: "50%"}}>
+      <h3 style={{textAlign: "center"}}>Finished Tasks</h3>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead>Finished Tasks</TableHead>
         <TableBody>{taskList}</TableBody>
       </Table>
     </TableContainer>

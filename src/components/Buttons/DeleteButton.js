@@ -7,14 +7,17 @@ import { useDispatch } from "react-redux";
 const DeleteButton = ({taskId}) => {
     const dispatch = useDispatch();
     console.log(taskId);
+
+
     return (
         <Button
             variant="contained"
             color="secondary"
-            startIcon={<DeleteIcon />}
-            style={{ float: "right" }}
+            style={{height: "2.5em"}}
             onClick={() => dispatch(deleteTask(taskId))}
-        />
+        > 
+        <DeleteIcon/>
+        </Button>
     );
 };
 
