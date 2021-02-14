@@ -1,19 +1,25 @@
 // Components
 import FinishedTasks from "./components/FinishedTasks";
 import UnFinishedTasks from "./components/UnFinishedTasks";
+import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="container">
-      <div className="row">
-        <div class="col">
-          <UnFinishedTasks />
+    <Switch>
+      <Route exact path="/">
+        <div className="container">
+          <div className="row">
+            <div class="col">
+              <UnFinishedTasks />
+            </div>
+            <div class="col">
+              <FinishedTasks />
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <FinishedTasks />
-        </div>
-      </div>
-    </div>
+      </Route>
+      <Route></Route>
+    </Switch>
   );
 }
 
