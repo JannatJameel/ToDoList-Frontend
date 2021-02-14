@@ -2,13 +2,17 @@
 import FinishedTasks from "./components/FinishedTasks";
 import UnFinishedTasks from "./components/UnFinishedTasks";
 
-
 function App() {
   return (
-    <div>
-      <h1>Helloooo</h1>
-      <FinishedTasks/>
-      <UnFinishedTasks/>
+    <div className="container">
+      <div className="row">
+        <div class="col">
+          <UnFinishedTasks />
+        </div>
+        <div class="col">
+          <FinishedTasks />
+        </div>
+      </div>
     </div>
   );
 }
