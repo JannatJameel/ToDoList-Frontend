@@ -22,18 +22,11 @@ const UnfinishedTasks = () => {
   const classes = useStyles();
   const tasks = useSelector((state) => state.unfinishedTasks);
   const taskList = tasks.map((task) => <Task task={task} key={task.id} />);
-  console.log(taskList);
+  console.log(tasks);
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Task</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Delete</TableCell>
-            <TableCell align="right">Priority</TableCell>
-          </TableRow>
-        </TableHead>
+        <TableHead>Unfinished Tasks</TableHead>
         <TableBody>{taskList}</TableBody>
         <AddButton />
       </Table>

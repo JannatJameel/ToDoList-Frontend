@@ -1,5 +1,3 @@
-import slugify from "react-slugify";
-
 const initialState = {
   unfinishedTasks: [],
   finishedTasks: [],
@@ -17,20 +15,17 @@ const reducer = (state = initialState, action) => {
     case "DELETE_TASK":
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload.taskId),
+        unfinishedTasks: state.unfinishedTasks.filter((task) => task.id !== action.payload.taskId), 
+        finishedTasks: state.finishedTasks.filter((task) => task.id !== action.payload.taskId)
       };
     case "CREATE_TASK":
       const { newTask } = action.payload;
-      newTask.id = state.tasks[state.tasks.length - 1].id + 1;
-      newTask.slug = slugify(newTask.name);
-
       return {
         ...state,
-        tasks: [...state.tasks, newTask],
+        unfinishedTasks: [...state.unfinishedTasks, newTask],
       };
     case "UPDATE_TASK":
       const { updatesTask } = action.payload;
-      updatesTask.slug = slugify(updatesTask.name);
       return {
         ...state,
         tasks: state.tasks.map((task) =>

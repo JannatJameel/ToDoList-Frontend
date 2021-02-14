@@ -2,42 +2,22 @@ import { useState } from "react";
 
 // Components
 import Priority from "./Priority";
+import DeleteButton from "./Buttons/DeleteButton";
+import Checkbox from "./Buttons/Checkbox";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-//Table
+// Table
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
-//buttons/checkbox
-import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Checkbox from "@material-ui/core/Checkbox";
-
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
 const Task = ({ task }) => {
-  const classes = useStyles();
+  console.log(task.deadline);
+  const days = ( new Date(task.deadline).getTime() - (new Date().getTime()) ) / 86400000;
+  const time = (days % 1) * 24;
 
-  const [checked, setChecked] = useState(true);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+
+
 
   return (
     <TableRow key={task.name}>
@@ -45,22 +25,13 @@ const Task = ({ task }) => {
         {task.name}
       </TableCell>
       <TableCell align="right">
-        <Checkbox
-          checked={checked}
-          onChange={handleChange}
-          inputProps={{ "aria-label": "primary checkbox" }}
-        />
+      <CheckBox/>
+      </TableCell>
+      <TableCell>
+        days {Math.floor(days)} hours {Math.floor(time)}
       </TableCell>
       <TableCell align="right">
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          startIcon={<DeleteIcon />}
-          style={{ float: "right" }}
-        >
-          Delete
-        </Button>
+        <DeleteButton taskId={task.id}/>
       </TableCell>
       <TableCell align="right">
         <Priority />
