@@ -3,6 +3,7 @@ import FinishedTasks from "./components/FinishedTasks";
 import UnFinishedTasks from "./components/UnFinishedTasks";
 import { Route, Switch } from "react-router-dom";
 
+import TaskForm from "./components/TaskForm";
 function App() {
   return (
     <Switch>
@@ -18,7 +19,9 @@ function App() {
           </div>
         </div>
       </Route>
-      <Route></Route>
+      <Route path="/form">
+        <TaskForm />
+      </Route>
     </Switch>
   );
 }
