@@ -26,7 +26,7 @@ const FinishedTasks = () => {
 
   return (
     <TableContainer component={Paper} style={{topMargin: "50%"}}>
-      <h3 style={{textAlign: "center"}}>Finished Tasks</h3>
+      <h3 style={{textAlign: "center", marginTop: "20px"}}>FINISHED TASKS</h3>
       <Table className={classes.table} aria-label="simple table">
         <TableBody>{taskList}</TableBody>
       </Table>

@@ -1,16 +1,13 @@
-import { useEffect } from "react";
 // Components
-import Priority from "./Priority";
+import Priority from "./Buttons/Priority";
 import DeleteButton from "./Buttons/DeleteButton";
 import CheckBox from "./Buttons/CheckBox";
-
 // Table
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
-const Task = ({ task }) => {
 
-  console.log(task.deadline);
+const Task = ({ task }) => {
   const days =
     (new Date(task.deadline).getTime() - new Date().getTime()) / 86400000;
   const time = (days % 1) * 24;
@@ -26,7 +23,7 @@ const Task = ({ task }) => {
         <CheckBox taskId={task.id} status={task.status} passed={passed}/>
       </TableCell>
       <TableCell>
-        {(days <= 0)? 0 : Math.ceil(days)} days remaining
+        due in {(days <= 0)? 0 : Math.ceil(days)} days
       </TableCell>
       <TableCell align="right">
         <DeleteButton taskId={task.id} passed={passed}/>

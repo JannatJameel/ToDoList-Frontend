@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const AddButton = () => {
   return (
-    <Link to="/form">
-      <Button variant="contained" color="primary" style={{width: "100%"}}>
+    <Link to="/form" style={{textDecoration: "none"}}>
+      <Button variant="contained" style={{width: "100%"}}>
         Add Task
       </Button>
     </Link>

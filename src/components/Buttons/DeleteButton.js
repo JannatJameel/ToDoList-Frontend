@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 
 const DeleteButton = ({taskId}) => {
     const dispatch = useDispatch();
-    console.log(taskId);
-
 
     return (
         <Button

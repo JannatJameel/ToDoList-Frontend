@@ -1,4 +1,4 @@
-import { updateTask } from "../store/actions";
+import { updateTask } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Button from "@material-ui/core/Button";

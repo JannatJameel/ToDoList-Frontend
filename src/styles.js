@@ -6,6 +6,6 @@ export const Form = styled.div`
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background-color: "#fefafb"
+    background-color: "grey"
   }
 `;

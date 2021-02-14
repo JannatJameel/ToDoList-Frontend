@@ -21,10 +21,11 @@ const UnfinishedTasks = () => {
   const taskList = tasks
     .filter((task) => !task.status)
     .map((task) => <Task task={task} key={task.id} />);
+    
   return (
     <>
     <TableContainer component={Paper}>
-      <h3 style={{textAlign: "center"}}>Unfinished Tasks</h3>
+      <h3 style={{textAlign: "center", marginTop: "20px"}}>UNFINISHED TASKS</h3>
       <Table className={classes.table} aria-label="simple table">
         <TableBody>{taskList}</TableBody>
       </Table>
