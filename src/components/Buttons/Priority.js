@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Button from "@material-ui/core/Button";
 
-const Priority = ({ taskId, passed }) => {
+const Priority = ({ taskId, passed, color }) => {
   const dispatch = useDispatch();
   const task = useSelector((state) => state.tasks).find(
     (task) => task.id === taskId
@@ -26,11 +26,16 @@ const Priority = ({ taskId, passed }) => {
     setLevel(changePriority);
   };
   return (
-    <>
-      <Button disabled = {passed} value={level} style={{width: "6em", height: "2.5em"}} variant="contained" onClick={() => handleChange()}>
-        {level}
-      </Button>
-    </>
+    <Button
+      disabled={passed}
+      value={level}
+      style={{ width: "6em", height: "2.5em" }}
+      variant="contained"
+      onClick={() => handleChange()}
+      color={color}
+    >
+      {level}
+    </Button>
   );
 };
 

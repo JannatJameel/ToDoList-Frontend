@@ -17,10 +17,11 @@ const CheckBox = ({ taskId, status, passed }) => {
   };
   return (
     <Checkbox
+      color="primary"
       checked={checked}
       onChange={handleChange}
       inputProps={{ "aria-label": "primary checkbox" }}
-      disabled = {passed}
+      disabled={passed}
     />
   );
 };
